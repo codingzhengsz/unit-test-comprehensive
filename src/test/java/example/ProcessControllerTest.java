@@ -2,8 +2,7 @@ package example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ProcessControllerTest {
 
@@ -15,10 +14,10 @@ public class ProcessControllerTest {
         String result = "4A0B";
 
         // when
-        boolean isContinue = controller.processControl(frequency, result);
+        String isContinue = controller.processControl(frequency, result);
 
         // then
-        assertTrue(isContinue);
+        assertEquals(isContinue, "Success");
     }
 
     @Test
@@ -29,10 +28,10 @@ public class ProcessControllerTest {
         String result = "4A0B";
 
         // when
-        boolean isContinue = controller.processControl(frequency, result);
+        String isContinue = controller.processControl(frequency, result);
 
         // then
-        assertFalse(isContinue);
+        assertEquals(isContinue, "Fail");
     }
 
     @Test
@@ -43,10 +42,10 @@ public class ProcessControllerTest {
         String result = "2A2B";
 
         // when
-        boolean isContinue = controller.processControl(frequency, result);
+        String isContinue = controller.processControl(frequency, result);
 
         // then
-        assertFalse(isContinue);
+        assertEquals(isContinue, "Fail");
     }
 
 }
