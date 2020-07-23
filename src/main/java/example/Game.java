@@ -18,6 +18,9 @@ public class Game {
     }
 
     public String play(int[] guessNumber) {
+        if (!validator.validation(guessNumber)) {
+            return "Wrong Input, Input again";
+        }
         return null;
     }
 
