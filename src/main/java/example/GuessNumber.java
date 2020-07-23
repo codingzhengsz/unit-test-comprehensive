@@ -1,8 +1,8 @@
 package example;
 
-public class ResultGenerator {
+public class GuessNumber {
 
-    public String generateResult(int[] answer, int[] guessNumber) {
+    public String guess(int[] answer, int[] guessNumber) {
         boolean isAllCorrect = true;
         for (int index = 0; index < answer.length; index ++) {
             if (answer[index] != guessNumber[index]) {
