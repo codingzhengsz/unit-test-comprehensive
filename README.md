@@ -1,5 +1,8 @@
 # Unit Test Comprehensive 
 
+## Context Map
+![context_map](/context_map.png)
+
 ## Business Requirement
 
 There is a game that realizes guessing numbers. There are four grids in the game, each with a number from 0 to 9, and the numbers for any two grids are different. You have 6 chances to guess. If you guess right, then you win; otherwise, you fail. Each time when you guess, you need to input 4 numbers in sequence. The program will give you feedback of xAxB according to the guessing situation. The number before A represents the number of correct position and number, and the number before B represents the number of correct number but wrong position.
