@@ -1,6 +1,5 @@
 package example;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -40,4 +39,17 @@ public class AnswerGeneratorTest {
         assertEquals(4, numberMap.size());
     }
 
+    @Test
+    void should_all_numbers_between_0_and_9_when_generate_answer(){
+        // given
+        AnswerGenerator generator = new AnswerGenerator();
+
+        // when
+        int[] answer = generator.generateAnswer();
+
+        // then
+        for (int grid: answer) {
+            assertTrue(0 <= grid && grid <= 9);
+        }
+    }
 }
