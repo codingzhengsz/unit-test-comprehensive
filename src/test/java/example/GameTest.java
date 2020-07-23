@@ -63,4 +63,21 @@ public class GameTest {
         // then
         assertEquals("Fail", result);
     }
+
+    @Test
+    public void should_return_4A0B_when_play_given_answer_1234_and_guess_input_1234() {
+        // given
+        GuessNumber guessNumber = new GuessNumber();
+        ProcessController processController = new ProcessController();
+        Validator validator = new Validator();
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generateAnswer()).thenReturn(new int[]{1,2,3,4});
+
+        Game game = new Game(answerGenerator, guessNumber, validator, processController);
+        // when
+        String result = game.play(new int[]{1,2,3,4});
+
+        // then
+        assertEquals("4A0B", result);
+    }
 }
