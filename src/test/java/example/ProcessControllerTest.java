@@ -17,7 +17,7 @@ public class ProcessControllerTest {
         String isContinue = controller.processControl(frequency, result);
 
         // then
-        assertEquals(isContinue, "Success");
+        assertEquals(isContinue, "4A0B");
     }
 
     @Test

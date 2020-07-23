@@ -6,7 +6,7 @@ public class ProcessController {
         if (frequency > 6 || !"4A0B".equals(result)) {
             return "Fail";
         }
-        return "Success";
+        return result;
     }
 
 }
