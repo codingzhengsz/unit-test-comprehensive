@@ -20,12 +20,17 @@ public class GuessNumber {
             return "4A0B";
         } else {
             int count = 0;
+            int samePositionAndSameNumberCount = 0;
             for (int index = 0; index < answer.length; index++) {
-                if (answerSet.contains(answer[index]) && guessSet.contains(guessNumber[index])) {
-                    count++;
+                if (answer[index] == guessNumber[index]) {
+                    samePositionAndSameNumberCount ++;
+                } else {
+                    if (answerSet.contains(answer[index]) && guessSet.contains(guessNumber[index])) {
+                        count++;
+                    }
                 }
             }
-            return String.format("0A%dB", count);
+            return String.format("%dA%dB",samePositionAndSameNumberCount, count);
         }
     }
 
