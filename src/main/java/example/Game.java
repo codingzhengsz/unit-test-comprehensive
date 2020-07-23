@@ -25,7 +25,10 @@ public class Game {
         }
         String guessResult = this.guessNumber.guess(this.answer, guessNumber);
         String result = this.processController.processControl(this.frequency++, guessResult);
-
+        if ("Fail".equals(result)) {
+            this.frequency = 0;
+            this.answer = this.answerGenerator.generateAnswer();
+        }
         return result;
     }
 
