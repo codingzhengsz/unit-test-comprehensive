@@ -2,6 +2,7 @@ package example;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ValidatorTest {
@@ -19,4 +20,16 @@ public class ValidatorTest {
         assertTrue(result);
     }
 
+    @Test
+    void should_return_false_when_validate_given_2235() {
+        // given
+        Validator validator = new Validator();
+        int[] input = {2,2,3,5};
+
+        // when
+        boolean result = validator.validation(input);
+
+        // then
+        assertFalse(result);
+    }
 }
