@@ -1,8 +1,12 @@
 package example;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AnswerGeneratorTest {
 
@@ -18,4 +22,22 @@ public class AnswerGeneratorTest {
         // then
         assertEquals(4, answer.length);
     }
+
+    @Test
+    void should_return_array_without_repeated_numbers_when_generate_answer(){
+        // given
+        AnswerGenerator generator = new AnswerGenerator();
+        HashMap<Integer, Integer> numberMap = new HashMap<>();
+
+        // when
+        int[] answer = generator.generateAnswer();
+
+        // then
+        for (int grid: answer) {
+            numberMap.put(grid, numberMap.get(grid));
+        }
+
+        assertEquals(4, numberMap.size());
+    }
+
 }
