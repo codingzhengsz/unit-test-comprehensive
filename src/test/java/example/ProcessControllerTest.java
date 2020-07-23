@@ -35,4 +35,18 @@ public class ProcessControllerTest {
         assertFalse(isContinue);
     }
 
+    @Test
+    void should_return_false_when_process_control_given_3_and_2A2B() {
+        // given
+        ProcessController controller = new ProcessController();
+        int frequency = 3;
+        String result = "2A2B";
+
+        // when
+        boolean isContinue = controller.processControl(frequency, result);
+
+        // then
+        assertFalse(isContinue);
+    }
+
 }
