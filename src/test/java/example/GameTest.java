@@ -1,8 +1,10 @@
 package example;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class GameTest {
 
@@ -40,5 +42,25 @@ public class GameTest {
 
         // then
         assertEquals("Wrong Input, Input again", result);
+    }
+
+    @Test
+    public void should_return_Fail_when_play_given_answer_1234_and_guess_input_4567() {
+        // given
+        GuessNumber guessNumber = new GuessNumber();
+        ProcessController processController = new ProcessController();
+        Validator validator = new Validator();
+        AnswerGenerator answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generateAnswer()).thenReturn(new int[]{1,2,3,4});
+
+        Game game = new Game(answerGenerator, guessNumber, validator, processController);
+        // when
+        String result = "";
+        for (int i = 0; i < 7; i++) {
+            result = game.play(new int[]{4, 5, 6, 7});
+        }
+
+        // then
+        assertEquals("Fail", result);
     }
 }

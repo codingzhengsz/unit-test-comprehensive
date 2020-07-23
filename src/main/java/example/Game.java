@@ -14,7 +14,7 @@ public class Game {
         this.guessNumber = guessNumber;
         this.validator = validator;
         this.processController = processController;
-        answer = this.answerGenerator.generateAnswer();
+        this.answer = this.answerGenerator.generateAnswer();
     }
 
     public String play(int[] guessNumber) {
