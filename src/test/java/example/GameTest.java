@@ -45,7 +45,7 @@ public class GameTest {
     }
 
     @Test
-    public void should_return_Fail_when_play_given_answer_1234_and_guess_input_4567() {
+    public void should_return_0A1B_when_play_given_answer_1234_and_guess_input_4567() {
         // given
         GuessNumber guessNumber = new GuessNumber();
         ProcessController processController = new ProcessController();
@@ -61,11 +61,11 @@ public class GameTest {
         }
 
         // then
-        assertEquals("Fail", result);
+        assertEquals("0A1B", result);
     }
 
     @Test
-    public void should_return_4A0B_when_play_given_answer_1234_and_guess_input_1234() {
+    public void should_return_Success_when_play_given_answer_1234_and_guess_input_1234() {
         // given
         GuessNumber guessNumber = new GuessNumber();
         ProcessController processController = new ProcessController();
@@ -78,6 +78,6 @@ public class GameTest {
         String result = game.play(new int[]{1,2,3,4});
 
         // then
-        assertEquals("4A0B", result);
+        assertEquals("Success", result);
     }
 }
