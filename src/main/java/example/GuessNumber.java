@@ -6,14 +6,7 @@ import java.util.Set;
 public class GuessNumber {
 
   public String guess(int[] answer, int[] guessNumber) {
-    Set<Integer> answerSet = new HashSet<>();
-    Set<Integer> guessSet = new HashSet<>();
-    for (int i : answer) {
-      answerSet.add(i);
-    }
-    for (int i : guessNumber) {
-      guessSet.add(i);
-    }
+    Set<Integer> guessSet = convertArrayToSet(guessNumber);
     int notSamePositionAndSameNumberCount = 0;
     int samePositionAndSameNumberCount = 0;
     for (int index = 0; index < answer.length; index++) {
@@ -26,6 +19,14 @@ public class GuessNumber {
       }
     }
     return formatResultMsg(notSamePositionAndSameNumberCount, samePositionAndSameNumberCount);
+  }
+
+  private Set<Integer> convertArrayToSet(int[] guessNumber) {
+    Set<Integer> resultSet = new HashSet<>();
+    for (int i : guessNumber) {
+      resultSet.add(i);
+    }
+    return resultSet;
   }
 
   private String formatResultMsg(
