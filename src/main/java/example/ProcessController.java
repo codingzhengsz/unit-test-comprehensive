@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 public class ProcessController {
 
+  public static final String CORRECT_ANSWER = "4A0B";
   private Validator validator;
   private GuessNumber guessNumber;
 
@@ -17,14 +18,11 @@ public class ProcessController {
     Scanner scanner = new Scanner(System.in);
 
     for (int i = 0; i < 6; i++) {
-      String guessAnswer = scanner.next();
-      int[] guessAnswerArray =
-          Stream.of(guessAnswer.split("")).mapToInt(Integer::parseInt).toArray();
-      boolean isPass = validator.validation(guessAnswerArray);
-      if (isPass) {
+      int[] guessAnswerArray = getGuessAnswerArray(scanner);
+      if (validator.validation(guessAnswerArray)) {
         String result = guessNumber.guess(answer, guessAnswerArray);
-        if ("4A0B".equals(result)) {
-          return "4A0B";
+        if (CORRECT_ANSWER.equals(result)) {
+          return CORRECT_ANSWER;
         } else {
           System.out.print(result + "\n");
         }
@@ -33,5 +31,10 @@ public class ProcessController {
       }
     }
     return "You are Fail";
+  }
+
+  private int[] getGuessAnswerArray(Scanner scanner) {
+    String guessAnswer = scanner.next();
+    return Stream.of(guessAnswer.split("")).mapToInt(Integer::parseInt).toArray();
   }
 }
