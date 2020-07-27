@@ -18,19 +18,23 @@ public class ProcessController {
     Scanner scanner = new Scanner(System.in);
 
     for (int i = 0; i < 6; i++) {
-      int[] guessAnswerArray = getGuessAnswerArray(scanner);
-      if (validator.validation(guessAnswerArray)) {
-        String result = guessNumber.guess(answer, guessAnswerArray);
-        if (CORRECT_ANSWER.equals(result)) {
-          return CORRECT_ANSWER;
-        } else {
-          System.out.print(result + "\n");
-        }
-      } else {
-        System.out.print("Wrong Input,Input again\n");
-      }
+      if (subProcess(answer, scanner)) return CORRECT_ANSWER;
     }
     return "You are Fail";
+  }
+
+  private boolean subProcess(int[] answer, Scanner scanner) {
+    int[] guessAnswerArray = getGuessAnswerArray(scanner);
+    if (validator.validation(guessAnswerArray)) {
+      String result = guessNumber.guess(answer, guessAnswerArray);
+      System.out.print(result + "\n");
+      if (result.equals(CORRECT_ANSWER)) {
+        return true;
+      }
+    } else {
+      System.out.print("Wrong Input,Input again\n");
+    }
+    return false;
   }
 
   private int[] getGuessAnswerArray(Scanner scanner) {
