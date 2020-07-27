@@ -6,19 +6,30 @@ import java.util.Set;
 public class GuessNumber {
 
   public String guess(int[] answer, int[] guessNumber) {
+    return formatResultMsg(
+        countNotSamePositionAndSameNumber(answer, guessNumber),
+        countSamePositionAndSameNumber(answer, guessNumber));
+  }
+
+  private int countNotSamePositionAndSameNumber(int[] answerNumber, int[] guessNumber) {
+    int count = 0;
     Set<Integer> guessSet = convertArrayToSet(guessNumber);
-    int notSamePositionAndSameNumberCount = 0;
-    int samePositionAndSameNumberCount = 0;
-    for (int index = 0; index < answer.length; index++) {
-      if (answer[index] == guessNumber[index]) {
-        samePositionAndSameNumberCount++;
-      } else {
-        if (guessSet.contains(answer[index])) {
-          notSamePositionAndSameNumberCount++;
-        }
+    for (int index = 0; index < answerNumber.length; index++) {
+      if (answerNumber[index] != guessNumber[index] && guessSet.contains(answerNumber[index])) {
+        count++;
       }
     }
-    return formatResultMsg(notSamePositionAndSameNumberCount, samePositionAndSameNumberCount);
+    return count;
+  }
+
+  private int countSamePositionAndSameNumber(int[] answerNumber, int[] guessNumber) {
+    int count = 0;
+    for (int index = 0; index < answerNumber.length; index++) {
+      if (answerNumber[index] == guessNumber[index]) {
+        count++;
+      }
+    }
+    return count;
   }
 
   private Set<Integer> convertArrayToSet(int[] guessNumber) {
