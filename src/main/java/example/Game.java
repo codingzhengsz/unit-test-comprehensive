@@ -2,34 +2,25 @@ package example;
 
 public class Game {
 
-    private AnswerGenerator answerGenerator;
-    private GuessNumber guessNumber;
-    private Validator validator;
-    private ProcessController processController;
+  private AnswerGenerator answerGenerator;
+  private ProcessController processController;
 
-    private int[] answer;
-    private int frequency;
+  public Game(AnswerGenerator answerGenerator, ProcessController processController) {
+    this.answerGenerator = answerGenerator;
+    this.processController = processController;
+  }
 
-    public Game(AnswerGenerator answerGenerator, GuessNumber guessNumber, Validator validator, ProcessController processController) {
-        this.answerGenerator = answerGenerator;
-        this.guessNumber = guessNumber;
-        this.validator = validator;
-        this.processController = processController;
-        this.answer = this.answerGenerator.generateAnswer();
-        this.frequency = 0;
+  public void play() {
+
+    //    while (true) {
+    System.out.println("A new Round to play game!\nAnd then you can input your answer:");
+    int[] answer = this.answerGenerator.generateAnswer();
+    String result = processController.processControl(answer);
+    if (result.equals("A40B")) {
+      System.out.println("You are Success!");
+    } else {
+      System.out.println(result);
+      //      }
     }
-
-    public String play(int[] guessNumber) {
-        if (!validator.validation(guessNumber)) {
-            return "Wrong Input, Input again";
-        }
-        String guessResult = this.guessNumber.guess(this.answer, guessNumber);
-        String result = this.processController.processControl(this.frequency++, guessResult);
-        if ("Fail".equals(result)) {
-            this.frequency = 0;
-            this.answer = this.answerGenerator.generateAnswer();
-        }
-        return result;
-    }
-
+  }
 }
